@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/background_color"
+    tools:context=".ui.account.AccountFragment">
+
+    <!-- Profile Picture with Elevation and Circular Crop -->
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/travel_trove_no_background"
+        android:contentDescription="@string/travel_trove_logo_content_description"
+        android:background="@drawable/circle_background"
+        android:elevation="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- User Name with Font Style -->
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello, Name"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/primary_text"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/app_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Email Address with Font Color Change -->
+    <TextView
+        android:id="@+id/user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You can access all your account details here"
+        android:textSize="18sp"
+        android:textColor="@color/secondary_text"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintTop_toBottomOf="@id/user_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/account_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/gray_divider"
+        app:layout_constraintTop_toBottomOf="@id/user_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="12dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/account_divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="13dp"
+            android:layout_marginHorizontal="6dp"
+            android:layout_marginBottom="20dp"
+            android:padding="8dp">
+
+        <Button
+            android:id="@+id/booking_history_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Booking History"
+            android:backgroundTint="@color/light_blue"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"
+            android:padding="12dp"
+            android:textSize="18sp"/>
+
+        <!-- Saved Destinations Button with Ripple and Rounded Corners -->
+        <Button
+            android:id="@+id/saved_destinations_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saved Destinations"
+            android:backgroundTint="@color/light_blue"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"
+            android:padding="12dp"
+            android:textSize="18sp"/>
+
+        <!-- Account Settings Button with a Dark Style -->
+        <Button
+            android:id="@+id/account_settings_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account Settings"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"
+            android:drawablePadding="8dp"
+            android:padding="12dp"
+            android:textSize="18sp"/>
+
+        <!-- Log Out Button with Ripple and Red Tint -->
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:padding="12dp"
+            android:textSize="18sp"/>
+
+        </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

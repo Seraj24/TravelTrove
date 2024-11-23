@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1065447136144",
+    "firebase_url": "https://traveltrove-d1af4-default-rtdb.firebaseio.com",
+    "project_id": "traveltrove-d1af4",
+    "storage_bucket": "traveltrove-d1af4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065447136144:android:ae150addc38c02f1043115",
+        "android_client_info": {
+          "package_name": "com.example.prjtraveltrovesprint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl9CEe-UXzOHDArMiVHkav4eMOaYjl21M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

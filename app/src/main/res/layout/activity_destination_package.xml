@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/destination_package"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_background"
+    tools:context=".DestinationPackageActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+    <LinearLayout
+        android:id="@+id/destination_package_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="16dp">
+
+        <!-- Trip Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/package_title"
+            android:text="Paris Package"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Image Section -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/package_image"
+            android:contentDescription="@string/paris_card_content_description"
+            android:src="@drawable/paris_card"
+            android:scaleType="centerCrop"
+            android:background="@drawable/paris_card"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"/>
+
+        <!-- Trip Details Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trip Details"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please choose your trip attributes"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp"/>
+
+
+
+        <!-- Book Button -->
+        <Button
+            android:id="@+id/book_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/book_now"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:textSize="18sp"/>
+
+        <!-- Return Button -->
+        <Button
+            android:id="@+id/trip_package_return_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/return_text"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:padding="12dp"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

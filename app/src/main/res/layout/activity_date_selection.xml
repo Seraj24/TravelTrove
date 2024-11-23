@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/date_selection"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".DateSelectionActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <LinearLayout
+            android:id="@+id/date_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:padding="16dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Choose Date"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@drawable/airline_image_down_scaled"
+                android:src="@drawable/airline_image"
+                android:scaleType="centerCrop"
+                android:background="@drawable/airline_image_down_scaled"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/select_date"
+                android:text="Select Date"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/instructionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please select your desired time within the avaliable dates"
+                android:textSize="20sp"
+                android:textColor="@color/light_blue"
+                app:layout_constraintTop_toBottomOf="@id/select_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/departure_date_package"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Departure Date"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:padding="12dp"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/return_date_package"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Return Date"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:padding="12dp"
+                android:textSize="18sp"
+                android:layout_marginBottom="25dp"/>
+
+
+
+            <Button
+                android:id="@+id/next_btn_date_selection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:padding="12dp"
+                android:textSize="18sp"/>
+
+
+
+
+            <Button
+                android:id="@+id/return_btn_date_selection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/return_text"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:padding="12dp"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

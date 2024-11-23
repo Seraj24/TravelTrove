@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/guest_number"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GuestNumberActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <LinearLayout
+            android:id="@+id/guests_number_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. Choose Travelers"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Image Section -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@string/hotel_image"
+                android:src="@drawable/hotel_image_edited"
+                android:scaleType="centerCrop"
+                android:background="@drawable/hotel_image_edited"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"/>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Number of travelers"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txtAvailableSeats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Available seats: "
+                android:textSize="15sp"
+                android:layout_marginBottom="8dp"/>
+
+            <Spinner
+                android:id="@+id/guests_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"/>
+
+
+
+
+            <Button
+                android:id="@+id/next_btn_guests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:padding="12dp"
+                android:textSize="18sp"/>
+
+
+            <Button
+                android:id="@+id/return_btn_guests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/return_text"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:padding="12dp"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

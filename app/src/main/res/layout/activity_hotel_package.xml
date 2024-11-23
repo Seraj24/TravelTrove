@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hotel_package"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HotelPackageActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <LinearLayout
+            android:id="@+id/hotel_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4. Choose Your Hotel"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@string/hotel_image"
+                android:src="@drawable/hotel_image_edited"
+                android:scaleType="centerCrop"
+                android:background="@drawable/hotel_image_edited"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/select_hotel"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <RadioGroup
+                android:id="@+id/rg_hotel_package"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp">
+
+                <RadioButton
+                    android:id="@+id/hotel1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hotel La Comtesse"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/hotel2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hotel Ritz"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/hotel3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grand Hotel Central"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/hotel4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Plaza"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/hotel5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hotel California"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Room Options"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/hotel_package_room_type_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Rooms Count"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/txtAvailableRooms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Available Rooms: Please select a room type first"
+                android:textSize="15sp"
+                android:layout_marginBottom="20dp" />
+
+            <Spinner
+                android:id="@+id/hotel_package_room_count_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                android:id="@+id/txtRoomCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Room Cost: "
+                android:textSize="20sp"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/txtTotalCostHotelPackage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Cost: "
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/next_btn_hotel_package"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:padding="12dp"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/return_btn_hotel_package"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/return_text"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:padding="12dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

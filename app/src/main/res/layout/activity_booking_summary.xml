@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/booking_summary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookingSummary">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <LinearLayout
+            android:id="@+id/booking_summary_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/txtPackage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/package_field"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txtTripDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/trip_date_field"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txtGuests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/guests"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txtAirline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/airline_field"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txtHotel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hotel_field"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txtServices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/services_field"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txtTotalCost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/total_cost_field"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/next_button_booking_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/confirm"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="12dp"
+                android:padding="12dp"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/return_btn_booking_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/return_text"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:padding="12dp"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/cancel_btn_booking_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:backgroundTint="@color/red"
+                android:textColor="@color/white"
+                android:layout_marginTop="45dp"
+                android:padding="12dp"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

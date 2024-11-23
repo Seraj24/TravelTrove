@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/additional_services"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdditionalServicesActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <LinearLayout
+            android:id="@+id/additional_services_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:padding="16dp">
+
+            <!-- Trip Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5. Additional Services"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Image Section -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Additional Services Image"
+                android:scaleType="centerCrop"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"/>
+
+            <!-- Suggested Services Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Additional Services "
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/service1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breakfast Included"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/service2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Airport Pickup"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/service3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Guided Tours"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Next Button -->
+            <Button
+                android:id="@+id/next_btn_additional_services"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:padding="12dp"
+                android:textSize="18sp"/>
+
+            <!-- Return Button -->
+            <Button
+                android:id="@+id/return_btn_additional_services"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/return_text"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:padding="12dp"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
