@@ -29,7 +29,7 @@ public class BookingSummary extends AppCompatActivity implements ActivityEssenti
     Button nextBtn, returnBtn, cancelBtn;
 
     int guestsCount;
-    double hotelCost, airlineCost;
+    double hotelCost, airlineCost, totalCost = -1;
 
     private static final String LOG_TAG = "BOOKING SUMMARY ACTIVITY";
 
@@ -66,7 +66,7 @@ public class BookingSummary extends AppCompatActivity implements ActivityEssenti
         hotelTextView = findViewById(R.id.txtHotel);
         servicesTextView = findViewById(R.id.txtServices);
         totalCostTextView = findViewById(R.id.txtTotalCost);
-        String emptySpace = " ";
+        String emptySpace = " ", dollarSign = "$";
 
         guestsCount = tripPackage.getGuests();
         double totalCost = calculateTripCost();
@@ -78,9 +78,9 @@ public class BookingSummary extends AppCompatActivity implements ActivityEssenti
         String hotelTxt = hotelTextView.getText().toString() + emptySpace + tripPackage.getHotel().getName();
         String servicesTxt = servicesTextView.getText().toString() + emptySpace + tripPackage.getAdditionalServices().get(0);
         String totalCostTxt = String.format(Locale.US, "Hotel Cost (%d nights): ",
-                tripPackage.getDays()) + hotelCost + "/Per Night\n\n\n\nAirline Cost (Two-way): "  +
-                airlineCost + "\n/Per Person\n\n\n\n" + totalCostTextView.getText().toString()  +
-                emptySpace + totalCost + " for " + guestsCount + " guest/s";
+                tripPackage.getDays()) + dollarSign + hotelCost + "\n\n\n\nAirline Cost (Two-way): "  +
+                dollarSign + airlineCost + "\n/Per Person\n\n\n\n" + totalCostTextView.getText().toString()  +
+                emptySpace + dollarSign + totalCost + " for " + guestsCount + " guest/s";
 
 
         packageTextView.setText(packageTxt);
@@ -101,14 +101,21 @@ public class BookingSummary extends AppCompatActivity implements ActivityEssenti
     }
 
     private void launchConfirmBookingActivity() {
-        Intent intent = new Intent(BookingSummary.this, ConfirmBookingActivity.class);
-        startActivity(intent);
+        if (totalCost != -1) {
+            tripPackage.setTotalCost(totalCost);
+            Intent intent = new Intent(BookingSummary.this, ConfirmBookingActivity.class);
+            intent.putExtra("destination_details", currentDestination);
+            intent.putExtra("trip_package", tripPackage);
+            startActivity(intent);
+        }
+
     }
 
     private double calculateTripCost(){
         hotelCost = tripPackage.getRoom().getCost() * tripPackage.getDays();
         airlineCost = tripPackage.getAirline().getCost();
-        return (hotelCost + airlineCost) * guestsCount;
+        totalCost = (hotelCost + airlineCost) * guestsCount;
+        return totalCost;
 
     }
 

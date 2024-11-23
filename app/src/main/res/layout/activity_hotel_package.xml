@@ -97,7 +97,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Room Options"
+                android:text="@string/room_options"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
@@ -111,7 +111,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Select Rooms Count"
+                android:text="@string/select_rooms_count"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
@@ -120,7 +120,7 @@
                 android:id="@+id/txtAvailableRooms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Available Rooms: Please select a room type first"
+                android:text="@string/available_rooms_please_select_a_room_type_first"
                 android:textSize="15sp"
                 android:layout_marginBottom="20dp" />
 
@@ -134,7 +134,7 @@
                 android:id="@+id/txtRoomCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Room Cost: "
+                android:text="@string/room_cost"
                 android:textSize="20sp"
                 android:layout_marginBottom="20dp"/>
 
@@ -142,7 +142,7 @@
                 android:id="@+id/txtTotalCostHotelPackage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Cost: "
+                android:text="@string/total_cost"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="20dp"/>

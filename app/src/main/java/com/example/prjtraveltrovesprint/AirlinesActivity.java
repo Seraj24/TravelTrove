@@ -25,15 +25,20 @@ import com.example.prjtraveltrovesprint.utils.DataUtils;
 
 import java.util.Random;
 
-public class AirlinesActivity extends AppCompatActivity implements ActivityEssentials {
+public class AirlinesActivity extends AppCompatActivity implements ActivityEssentials,
+        RadioGroup.OnCheckedChangeListener {
 
     RadioGroup rgAirline;
+    TextView txtDetails1, txtDetails2, txtDetails3;
+    Button nextBtn, returnBtn;
+
     TripPackage tripPackage;
     Airline airline;
     Destination currentDestination;
     Destination.DestinationType destinationType;
-    Button nextBtn, returnBtn;
-    int minPrice = 400, maxPrice = 1500;
+
+    private static final int MIN_AIRLINES_PRICE = 400, MAX_AIRLINES_PRICE = 1500
+            ,MAX_SEATS_COUNT = 40;
 
     private static final String LOG_TAG = "AIRLINES ACTIVITY";
 
@@ -63,33 +68,17 @@ public class AirlinesActivity extends AppCompatActivity implements ActivityEssen
     }
 
     public void initialize() {
-        Random random = new Random();
 
         rgAirline = findViewById(R.id.rg_airline);
+        txtDetails1 = findViewById(R.id.details_airline1);
+        txtDetails2 = findViewById(R.id.details_airline2);
+        txtDetails3 = findViewById(R.id.details_airline3);
         nextBtn = findViewById(R.id.next_btn_airlines);
         returnBtn = findViewById(R.id.return_btn_airlines);
 
-        airline = new Airline();
-
         String[] airlines = DataUtils.getAirlinesList();
 
-        for (int i = 0; i < rgAirline.getChildCount(); i++) {
-            LinearLayout airlineLayout = (LinearLayout) rgAirline.getChildAt(i);
-
-            // Get the RadioButton inside the LinearLayout
-            RadioButton radioButton = airlineLayout.findViewById(airlineLayout.getChildAt(0).getId());
-            TextView textView = airlineLayout.findViewById(airlineLayout.getChildAt(1).getId());
-
-            if (radioButton instanceof RadioButton) {
-                radioButton.setText(airlines[i]);
-            }
-            if (textView instanceof TextView) {
-                int randomPrice = random.nextInt(maxPrice) + minPrice;
-                String newRandomPriceText = "$" + randomPrice;
-                textView.setText(newRandomPriceText);
-            }
-
-        }
+        InitializeAirlines(airlines);
 
         nextBtn.setOnClickListener(v ->
                 launchHotelPackageSelectionActivity()
@@ -98,38 +87,45 @@ public class AirlinesActivity extends AppCompatActivity implements ActivityEssen
         returnBtn.setOnClickListener(v ->
                 ActivitiesUtils.returnToPreviousView(this)
                 );
+
+        rgAirline.setOnCheckedChangeListener(this);
     }
 
-    private boolean airlineSelected() {
-        boolean airlineSelected = false;
+    private void InitializeAirlines(String[] airlines) {
+        Random random = new Random();
+
         for (int i = 0; i < rgAirline.getChildCount(); i++) {
-            LinearLayout airlineLayout = (LinearLayout) rgAirline.getChildAt(i);
-            RadioButton radioButton = airlineLayout.findViewById(airlineLayout.getChildAt(0).getId());
 
-            if (radioButton != null && radioButton.isChecked()) {
-                airline.setName(radioButton.getText().toString());
+            RadioButton radioBtn = (RadioButton) rgAirline.getChildAt(i);
 
-                TextView hotelCost = airlineLayout.findViewById(airlineLayout.getChildAt(1).getId());
-                if (hotelCost != null) {
-                    String costString = hotelCost.getText().toString().trim();
-                    costString = costString.replaceAll("\\D", "");
+            if (radioBtn != null) {
+                Airline newAirline = new Airline();
 
-                    if (!costString.isEmpty()) {
-                        airline.setCost(Double.parseDouble(costString));
-                    } else {
-                        Log.e(LOG_TAG, "No valid digits found in cost.");
-                    }
-                }
-                airlineSelected = true;
-                break;
+                // Set airline name
+                radioBtn.setText(airlines[i]);
+                newAirline.setName(airlines[i]);
+
+                // Set available seats
+                int randomSeatsCount = random.nextInt(MAX_SEATS_COUNT);
+                newAirline.setSeatsCount(randomSeatsCount);
+
+                // Set price
+                int randomPrice = random.nextInt(MAX_AIRLINES_PRICE) + MIN_AIRLINES_PRICE;
+                newAirline.setCost(randomPrice);
+
+                // Store the Airline object in the tag of the radio btn
+                radioBtn.setTag(newAirline);
             }
         }
-        return airlineSelected;
     }
 
-
     private void launchHotelPackageSelectionActivity() {
-        if (airlineSelected()) {
+    if (airline != null) {
+        if (tripPackage.getGuests() > airline.getSeatsCount()) {
+            Toast.makeText(this, "Insufficient seats for " + tripPackage.getGuests()
+                    + " Travelers", Toast.LENGTH_SHORT).show();
+            return;
+        }
             tripPackage.setAirline(airline);
             Intent intent = new Intent(AirlinesActivity.this, HotelPackageActivity.class);
             intent.putExtra("destination_details", currentDestination);
@@ -140,5 +136,40 @@ public class AirlinesActivity extends AppCompatActivity implements ActivityEssen
             Toast.makeText(this, "Please select a airline.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void showAirlineDetails(Airline selectedAirline) {
+        final String AN_PLACE_HOLDER = "Airline: ", ASC_PLACE_HOLDER = "Available Seats: ",
+                AC_PLACE_HOLDER = "Ticket Price: ";
+
+        String airlineName = AN_PLACE_HOLDER + selectedAirline.getName();
+        String airlineSeatsCount = ASC_PLACE_HOLDER + selectedAirline.getSeatsCount();
+        String airlineTicketPrice = AC_PLACE_HOLDER + String.valueOf(selectedAirline.getCost());
+
+        txtDetails1.setText(airlineName);
+        txtDetails2.setText(airlineSeatsCount);
+        txtDetails3.setText(airlineTicketPrice);
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        RadioButton selectedRadioButton = findViewById(i);
+
+        if (selectedRadioButton != null) {
+            Airline selectedAirline = (Airline) selectedRadioButton.getTag();
+            if (selectedAirline != null) {
+                airline = new Airline();
+                airline.setName(selectedAirline.getName());
+                airline.setCost(selectedAirline.getCost());
+                airline.setSeatsCount(selectedAirline.getSeatsCount());
+                showAirlineDetails(airline);
+
+                Log.d(LOG_TAG, "Selected Airline: " + selectedAirline.getName());
+                Log.d(LOG_TAG, "Price: " + selectedAirline.getCost());
+                Log.d(LOG_TAG, "Seats Available: " + selectedAirline.getSeatsCount());
+            } else {
+                Log.e(LOG_TAG, "Selected RadioButton has no Airline tag.");
+            }
+        }
     }
 }

@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -23,18 +22,16 @@ import com.example.prjtraveltrovesprint.model.TripPackage;
 import com.example.prjtraveltrovesprint.utils.ActivitiesUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class GuestNumberActivity extends AppCompatActivity implements ActivityEssentials,
         AdapterView.OnItemSelectedListener, View.OnClickListener {
 
-    TextView txtAvailableSeats;
     Button btnReturn, btnNext;
     Spinner guestSpinner;
 
 
-    int randomGuestsCount = -1;
+    int randomTravelersCount = -1;
     ArrayList<String> guestCountOptions = new ArrayList<>();
     Destination currentDestination;
     Destination.DestinationType destinationType;
@@ -69,29 +66,25 @@ public class GuestNumberActivity extends AppCompatActivity implements ActivityEs
     @Override
     public void initialize() {
 
-        txtAvailableSeats = findViewById(R.id.txtAvailableSeats);
         guestSpinner = findViewById(R.id.guests_spinner);
         btnReturn = findViewById(R.id.return_btn_guests);
         btnNext = findViewById(R.id.next_btn_guests);
 
-        generateRandomGuestCount();
+        generateRandomTravelersCount();
         addSpinnerItems();
-
-        String updatedGuestsCountText = txtAvailableSeats.getText().toString() + " " + randomGuestsCount;
-        txtAvailableSeats.setText(updatedGuestsCountText);
 
         btnReturn.setOnClickListener(this);
         btnNext.setOnClickListener(this);
 
     }
 
-    private void generateRandomGuestCount() {
-        randomGuestsCount = new Random().nextInt(40) + 1;
+    private void generateRandomTravelersCount() {
+        randomTravelersCount = new Random().nextInt(40) + 1;
     }
 
     private void addSpinnerItems() {
 
-        for (int i = 1; i <= randomGuestsCount; i++) {
+        for (int i = 1; i <= randomTravelersCount; i++) {
             guestCountOptions.add(i + "");
         }
 

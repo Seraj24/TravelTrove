@@ -9,12 +9,12 @@
     tools:context=".AirlinesActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:id="@+id/airlines_container"
@@ -23,7 +23,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Trip Title -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,28 +30,23 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_gravity="center"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp" />
 
-            <!-- Image Section -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_marginBottom="16dp"
-                android:contentDescription="@drawable/airline_image_down_scaled"
+                android:contentDescription="@string/airline_image"
                 android:src="@drawable/airline_image"
-                android:scaleType="centerCrop"
-                android:background="@drawable/airline_image_down_scaled"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"/>
+                android:scaleType="centerCrop" />
 
-            <!-- Airline Selection Title -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/select_airline"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp" />
 
             <RadioGroup
                 android:id="@+id/rg_airline"
@@ -61,74 +55,65 @@
                 android:orientation="vertical"
                 android:layout_marginBottom="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/airline1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="Air Canada" />
 
-                    <RadioButton
-                        android:id="@+id/airline1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Air Canada"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:id="@+id/price1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$300"
-                        android:textSize="14sp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginBottom="8dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/airline2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="Air France" />
 
-                    <RadioButton
-                        android:id="@+id/airline2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Air France"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:id="@+id/price2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$350"
-                        android:textSize="14sp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginBottom="8dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/airline3"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <RadioButton
-                        android:id="@+id/airline3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="British Airlines"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:id="@+id/price3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$400"
-                        android:textSize="14sp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginBottom="16dp"/>
-                </LinearLayout>
+                    android:text="British Airlines" />
             </RadioGroup>
 
-            <!-- Next Button -->
+            <LinearLayout
+                android:id="@+id/details_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Selected Airline"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:id="@+id/details_airline1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Airline: "
+                    android:layout_marginBottom="8dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/details_airline2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Avaiable Seats"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/details_airline3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ticket Price: "
+                    android:layout_marginBottom="8dp"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/next_btn_airlines"
                 android:layout_width="match_parent"
@@ -137,9 +122,8 @@
                 android:backgroundTint="@color/black"
                 android:textColor="@color/white"
                 android:padding="12dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
-            <!-- Return Button -->
             <Button
                 android:id="@+id/return_btn_airlines"
                 android:layout_width="match_parent"
@@ -149,7 +133,7 @@
                 android:textColor="@color/white"
                 android:layout_marginTop="20dp"
                 android:padding="12dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,10 +3,8 @@ package com.example.prjtraveltrovesprint.model;
 import androidx.annotation.NonNull;
 
 import com.example.prjtraveltrovesprint.utils.DataUtils;
-import com.example.prjtraveltrovesprint.utils.DateUtils;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Random;
 
 public class Room implements Serializable {

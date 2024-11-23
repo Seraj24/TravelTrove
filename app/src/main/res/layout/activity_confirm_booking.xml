@@ -33,5 +33,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <Button
+        android:id="@+id/return_btn_confirm_booking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/return_text"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:padding="12dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/booking_details"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

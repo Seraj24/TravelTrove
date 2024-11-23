@@ -54,13 +54,7 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/txtAvailableSeats"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Available seats: "
-                android:textSize="15sp"
-                android:layout_marginBottom="8dp"/>
+
 
             <Spinner
                 android:id="@+id/guests_spinner"

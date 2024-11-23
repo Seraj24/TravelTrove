@@ -1,5 +1,7 @@
 package com.example.prjtraveltrovesprint.model;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -14,6 +16,7 @@ public class TripPackage implements Serializable {
     private Room room;
     private Airline airline;
     private List<String> additionalServices;
+    private double totalCost;
 
     public TripPackage() {
 
@@ -71,5 +74,27 @@ public class TripPackage implements Serializable {
 
     public void setAdditionalServices(List<String> additionalServices) {
         this.additionalServices = additionalServices;
+    }
+
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Date: " + date + "\n" +
+                "Travelers: " + guests + "\n" +
+                "Duration: " + days + " days\n" +
+                (hotel != null ? "Hotel: " + hotel.getName() + "\n" : "Hotel: Not selected\n") +
+                (room != null ? "Room: " + room.getRoomType() + "\n" : "Room: Not selected\n") +
+                (airline != null ? "Airline: " + airline.getName() + "\n" : "Airline: Not selected\n") +
+                (additionalServices != null && !additionalServices.isEmpty() ? "Additional Services: "
+                        + String.join(", ", additionalServices) + "\n" : "Additional Services: None\n")
+                + "Total Cost: " + totalCost;
     }
 }
