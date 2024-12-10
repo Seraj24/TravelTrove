@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -18,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.prjtraveltrovesprint.interfaces.ActivityEssentials;
 import com.example.prjtraveltrovesprint.model.Airline;
+import com.example.prjtraveltrovesprint.model.AirlineBooking;
+import com.example.prjtraveltrovesprint.model.Booking;
 import com.example.prjtraveltrovesprint.model.Destination;
 import com.example.prjtraveltrovesprint.model.TripPackage;
 import com.example.prjtraveltrovesprint.utils.ActivitiesUtils;
@@ -32,6 +33,8 @@ public class AirlinesActivity extends AppCompatActivity implements ActivityEssen
     TextView txtDetails1, txtDetails2, txtDetails3;
     Button nextBtn, returnBtn;
 
+    Booking booking;
+    AirlineBooking airlineBooking;
     TripPackage tripPackage;
     Airline airline;
     Destination currentDestination;
@@ -40,7 +43,9 @@ public class AirlinesActivity extends AppCompatActivity implements ActivityEssen
     private static final int MIN_AIRLINES_PRICE = 400, MAX_AIRLINES_PRICE = 1500
             ,MAX_SEATS_COUNT = 40;
 
-    private static final String LOG_TAG = "AIRLINES ACTIVITY";
+    private static final ActivityName activityName = ActivityName.AIRLINES;
+    private static final String LOG_TAG = activityName + " ACTIVITY";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +60,19 @@ public class AirlinesActivity extends AppCompatActivity implements ActivityEssen
         });
 
         try {
-            currentDestination = ActivitiesUtils.retrieveCurrentDestination(this);
-            tripPackage = ActivitiesUtils.retrieveTripPackage(this);
-
+            booking = ActivitiesUtils.retrieveBooking(this);
+            currentDestination = booking.getCurrentDestination();
             destinationType = currentDestination.getDestinationType();
 
-            initialize();
+            if (booking.getBookingType() == Booking.BookingType.PACKAGE) {
+                tripPackage = ActivitiesUtils.retrieveTripPackage(this);
+            }
+
+            airlineBooking = booking.getBookingType() == Booking.BookingType.AIRLINES ?
+                    ActivitiesUtils.retrieveAirlineBooking(this)
+                    : tripPackage.getAirlineBooking();
+
+                    initialize();
         } catch (Exception e) {
             Log.e(LOG_TAG, "Error while initializing destination activity: " + e.getMessage(), e);
             finish();
@@ -120,23 +132,42 @@ public class AirlinesActivity extends AppCompatActivity implements ActivityEssen
     }
 
     private void launchHotelPackageSelectionActivity() {
-    if (airline != null) {
-        if (tripPackage.getGuests() > airline.getSeatsCount()) {
-            Toast.makeText(this, "Insufficient seats for " + tripPackage.getGuests()
-                    + " Travelers", Toast.LENGTH_SHORT).show();
-            return;
-        }
-            tripPackage.setAirline(airline);
-            Intent intent = new Intent(AirlinesActivity.this, HotelPackageActivity.class);
-            intent.putExtra("destination_details", currentDestination);
-            intent.putExtra("trip_package", tripPackage);
-            startActivity(intent);
-        }
-        else {
-            Toast.makeText(this, "Please select a airline.", Toast.LENGTH_SHORT).show();
-        }
+        if (airline != null && airline.getSeatsCount() > 0) {
+            airlineBooking.setAirline(airline);
+            Intent intent = null;
+            switch (booking.getBookingType()) {
+                case PACKAGE:
+                    if (tripPackage.getGuests() > airline.getSeatsCount()) {
+                        Toast.makeText(this, "Insufficient seats for "
+                                + tripPackage.getGuests()
+                                + " Travelers", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    intent = new Intent(AirlinesActivity.this, HotelPackageActivity.class);
+                    intent.putExtra("trip_package", tripPackage);
+                    break;
+                case AIRLINES:
+                    intent = new Intent(AirlinesActivity.this, AirlineBookingSummaryActivity.class);
+                    intent.putExtra("airline_booking", airlineBooking);
+                    break;
+                default:
+                    break;
+            }
+
+                intent.putExtra("booking", booking);
+
+                startActivity(intent);
+            }
+            else {
+                String message = airline == null ? "Please select a airline." :
+                        "Sorry! There are no available seats for this airline.";
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+            }
 
     }
+
+
 
     private void showAirlineDetails(Airline selectedAirline) {
         final String AN_PLACE_HOLDER = "Airline: ", ASC_PLACE_HOLDER = "Available Seats: ",
@@ -144,7 +175,9 @@ public class AirlinesActivity extends AppCompatActivity implements ActivityEssen
 
         String airlineName = AN_PLACE_HOLDER + selectedAirline.getName();
         String airlineSeatsCount = ASC_PLACE_HOLDER + selectedAirline.getSeatsCount();
-        String airlineTicketPrice = AC_PLACE_HOLDER + String.valueOf(selectedAirline.getCost());
+        String ticketPrice = airline.getSeatsCount() > 0 ? String.valueOf(selectedAirline.getCost())
+                : "";
+        String airlineTicketPrice = AC_PLACE_HOLDER + ticketPrice;
 
         txtDetails1.setText(airlineName);
         txtDetails2.setText(airlineSeatsCount);

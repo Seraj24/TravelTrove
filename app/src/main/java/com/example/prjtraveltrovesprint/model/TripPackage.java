@@ -12,9 +12,8 @@ public class TripPackage implements Serializable {
     private String date;
     private int guests;
     private int days;
-    private Hotel hotel;
-    private Room room;
-    private Airline airline;
+    private HotelBooking hotelBooking;
+    private AirlineBooking airlineBooking;
     private List<String> additionalServices;
     private double totalCost;
 
@@ -44,28 +43,21 @@ public class TripPackage implements Serializable {
         this.days = days;
     }
 
-    public Hotel getHotel() {
-        return hotel;
+
+    public HotelBooking getHotelBooking() {
+        return hotelBooking;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+    public void setHotelBooking(HotelBooking hotelBooking) {
+        this.hotelBooking = hotelBooking;
     }
 
-    public Room getRoom() {
-        return room;
+    public AirlineBooking getAirlineBooking() {
+        return airlineBooking;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-    public Airline getAirline() {
-        return airline;
-    }
-
-    public void setAirline(Airline airline) {
-        this.airline = airline;
+    public void setAirlineBooking(AirlineBooking airlineBooking) {
+        this.airlineBooking = airlineBooking;
     }
 
     public List<String> getAdditionalServices() {
@@ -90,9 +82,9 @@ public class TripPackage implements Serializable {
         return "Date: " + date + "\n" +
                 "Travelers: " + guests + "\n" +
                 "Duration: " + days + " days\n" +
-                (hotel != null ? "Hotel: " + hotel.getName() + "\n" : "Hotel: Not selected\n") +
-                (room != null ? "Room: " + room.getRoomType() + "\n" : "Room: Not selected\n") +
-                (airline != null ? "Airline: " + airline.getName() + "\n" : "Airline: Not selected\n") +
+                (hotelBooking != null ? "Hotel: " + hotelBooking.getHotel().getName() + "\n" : "Hotel: Not selected\n") +
+                (hotelBooking.getRoom() != null ? "Room: " + hotelBooking.getRoom().getRoomType() + "\n" : "Room: Not selected\n") +
+                (airlineBooking != null ? "Airline: " + airlineBooking.getAirline().getName() + "\n" : "Airline: Not selected\n") +
                 (additionalServices != null && !additionalServices.isEmpty() ? "Additional Services: "
                         + String.join(", ", additionalServices) + "\n" : "Additional Services: None\n")
                 + "Total Cost: " + totalCost;

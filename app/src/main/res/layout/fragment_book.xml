@@ -30,7 +30,7 @@
 
             <!-- Search Bar -->
             <EditText
-                android:id="@+id/search_bar"
+                android:id="@+id/search_bar_book"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_background"
@@ -40,7 +40,7 @@
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
-            <!-- Section Divider -->
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -48,7 +48,27 @@
                 android:layout_marginBottom="12dp"
                 android:background="#E0E0E0" />
 
-            <!-- All Destinations Section -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/search_result_hsv"
+                android:paddingBottom="16dp">
+
+                <LinearLayout
+                    android:id="@+id/search_result_container_book"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/parent"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="@id/popular_cards_container">
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+
             <TextView
                 android:id="@+id/all_destinations"
                 android:layout_width="wrap_content"
@@ -59,7 +79,7 @@
                 android:paddingTop="10dp"
                 android:layout_marginBottom="12dp"/>
 
-            <!-- Horizontal ScrollView for Featured Destination Cards -->
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- Paris -->
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="200dp"
                         android:layout_height="250dp"
@@ -104,7 +124,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Tokyo -->
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="200dp"
                         android:layout_height="250dp"
@@ -138,7 +158,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- New York -->
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="200dp"
                         android:layout_height="250dp"
@@ -172,7 +192,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Rome -->
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="200dp"
                         android:layout_height="250dp"
@@ -206,7 +226,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Sydney -->
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="200dp"
                         android:layout_height="250dp"
@@ -240,7 +260,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Barcelona -->
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="200dp"
                         android:layout_height="250dp"
@@ -274,7 +294,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- London -->
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="200dp"
                         android:layout_height="250dp"
@@ -311,7 +331,7 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- Section Divider -->
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -329,7 +349,7 @@
                 android:paddingTop="10dp"
                 android:layout_marginBottom="12dp"/>
 
-            <!-- Horizontal ScrollView for Featured Destination Cards -->
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -340,8 +360,9 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- Featured New York -->
+
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/ny_featured_destination_card"
                         android:layout_width="200dp"
                         android:layout_height="250dp"
                         android:layout_marginEnd="12dp"
@@ -373,12 +394,12 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Featured Paris -->
+
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/paris_featured_destination_card"
                         android:layout_width="200dp"
                         android:layout_height="250dp"
                         android:layout_marginEnd="12dp"
-                        android:id="@+id/paris_featured_destination_card"
                         android:backgroundTint="#FFFFFF"
                         app:cardCornerRadius="12dp"
                         app:cardElevation="6dp">
@@ -407,8 +428,9 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Featured Tokyo -->
+
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/tokyo_featured_destination_card"
                         android:layout_width="200dp"
                         android:layout_height="250dp"
                         android:layout_marginEnd="12dp"
@@ -443,7 +465,7 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- Section Divider -->
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -461,7 +483,7 @@
                 android:paddingTop="10dp"
                 android:layout_marginBottom="12dp"/>
 
-            <!-- Horizontal ScrollView for For You Destination Cards -->
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -472,8 +494,9 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- Featured New York -->
+
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/ny_personalized_destination_card"
                         android:layout_width="200dp"
                         android:layout_height="250dp"
                         android:layout_marginEnd="12dp"
@@ -505,8 +528,9 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Featured Paris -->
+
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/paris_personalized_destination_card"
                         android:layout_width="200dp"
                         android:layout_height="250dp"
                         android:layout_marginEnd="12dp"
@@ -538,8 +562,9 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Featured Tokyo -->
+
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/tokyo_personalized_destination_card"
                         android:layout_width="200dp"
                         android:layout_height="250dp"
                         android:layout_marginEnd="12dp"

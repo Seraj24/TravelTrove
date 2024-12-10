@@ -18,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.prjtraveltrovesprint.interfaces.ActivityEssentials;
+import com.example.prjtraveltrovesprint.model.Booking;
 import com.example.prjtraveltrovesprint.model.Card;
 import com.example.prjtraveltrovesprint.model.TripPackage;
 import com.example.prjtraveltrovesprint.model.User;
@@ -35,12 +36,13 @@ import java.util.Objects;
 
 public class DestinationActivity extends AppCompatActivity implements ActivityEssentials, OnSuccessListener, OnFailureListener {
 
-    Destination.DestinationType destinationType;
+    Booking booking;
     Destination currentDestination;
+    Destination.DestinationType destinationType;
     TextView destinationTitle, addToFavoritesText;
     Button returnButton;
     LinearLayout packagesParentContainer, addToFavoritesContainer;
-    CardView allHotelsCard;
+    CardView allHotelsCard, allAirlinesCard;
     ImageView destinationBanner, addToFavoritesIcon;
 
     boolean isFavorite;
@@ -50,7 +52,8 @@ public class DestinationActivity extends AppCompatActivity implements ActivityEs
     User user = UserSession.getInstance().getUser();
     DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("user");
 
-    private static final String LOG_TAG = "DESTINATION ACTIVITY";
+    private static final ActivityName ACTIVITY_NAME = ActivityName.DESTINATION;
+    private static final String LOG_TAG = ACTIVITY_NAME + " ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +67,9 @@ public class DestinationActivity extends AppCompatActivity implements ActivityEs
         });
 
         try {
-            currentDestination = ActivitiesUtils.retrieveCurrentDestination(this);
+            booking = ActivitiesUtils.retrieveBooking(this);
+            currentDestination = booking.getCurrentDestination();
+            destinationType = currentDestination.getDestinationType();
 
             lastActivity = getIntent().getStringExtra("last_activity");
             if (lastActivity == null) {
@@ -72,7 +77,7 @@ public class DestinationActivity extends AppCompatActivity implements ActivityEs
                 finish();
             }
 
-            destinationType = currentDestination.getDestinationType();
+
 
             initialize();
         } catch (Exception e) {
@@ -89,6 +94,7 @@ public class DestinationActivity extends AppCompatActivity implements ActivityEs
     public void initialize() {
         returnButton = findViewById(R.id.destination_return_button);
         allHotelsCard = findViewById(R.id.all_hotels_card);
+        allAirlinesCard = findViewById(R.id.all_airlines_card);
         packagesParentContainer = findViewById(R.id.packages_container);
         destinationTitle = findViewById(R.id.destination_title);
         destinationBanner = findViewById(R.id.destination_banner);
@@ -113,12 +119,23 @@ public class DestinationActivity extends AppCompatActivity implements ActivityEs
         allHotelsCard.setOnClickListener(v ->
                 launchAllHotelsView()
                 );
+
+        allAirlinesCard.setOnClickListener(v ->
+                launchAllAirlinesView()
+                );
     }
 
+    private void launchAllAirlinesView() {
+        booking.setBookingType(Booking.BookingType.AIRLINES);
+        Intent intent = new Intent(DestinationActivity.this, DateSelectionActivity.class);
+        intent.putExtra("booking", booking);
+        startActivity(intent);
+    }
 
     private void launchAllHotelsView() {
-        Intent intent = new Intent(DestinationActivity.this, DestinationActivity.class);
-        intent.putExtra("destination_details", currentDestination);
+        booking.setBookingType(Booking.BookingType.HOTEL);
+        Intent intent = new Intent(DestinationActivity.this, HotelPackageActivity.class);
+        intent.putExtra("booking", booking);
         startActivity(intent);
     }
 
@@ -154,7 +171,7 @@ public class DestinationActivity extends AppCompatActivity implements ActivityEs
 
     private void launchCardView() {
         Intent intent = new Intent(DestinationActivity.this, DestinationPackageActivity.class);
-        intent.putExtra("destination_details", currentDestination);
+        intent.putExtra("booking", booking);
         intent.putExtra("last_activity", this.getClass().getName());
         startActivity(intent);
     }

@@ -38,7 +38,8 @@ public class SignUpActivity extends AppCompatActivity implements ActivityEssenti
     FirebaseDatabase ttDatabase;
     DatabaseReference userRef, counterRef;
 
-    private static final String LOG_TAG = "SIGN_UP ACTIVITY FIREBASE";
+    private static final ActivityName ACTIVITY_NAME = ActivityName.SIGN_UP;
+    private static final String LOG_TAG = ACTIVITY_NAME + " ACTIVITY FIREBASE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

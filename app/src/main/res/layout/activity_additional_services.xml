@@ -35,13 +35,14 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Image Section -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_marginBottom="16dp"
-                android:contentDescription="Additional Services Image"
+                android:contentDescription="@drawable/airline_image_down_scaled"
+                android:src="@drawable/additional_services"
                 android:scaleType="centerCrop"
+                android:background="@drawable/additional_services"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp"/>
 

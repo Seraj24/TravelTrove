@@ -17,6 +17,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.prjtraveltrovesprint.interfaces.ActivityEssentials;
+import com.example.prjtraveltrovesprint.model.Booking;
 import com.example.prjtraveltrovesprint.model.Destination;
 import com.example.prjtraveltrovesprint.model.TripPackage;
 import com.example.prjtraveltrovesprint.utils.ActivitiesUtils;
@@ -24,7 +25,7 @@ import com.example.prjtraveltrovesprint.utils.ActivitiesUtils;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GuestNumberActivity extends AppCompatActivity implements ActivityEssentials,
+public class TravelersNumberActivity extends AppCompatActivity implements ActivityEssentials,
         AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     Button btnReturn, btnNext;
@@ -33,12 +34,14 @@ public class GuestNumberActivity extends AppCompatActivity implements ActivityEs
 
     int randomTravelersCount = -1;
     ArrayList<String> guestCountOptions = new ArrayList<>();
+    Booking booking;
     Destination currentDestination;
     Destination.DestinationType destinationType;
     TripPackage tripPackage;
     int selectedGuestsCount = -1;
 
-    private static final String LOG_TAG = "GUEST NUMBER ACTIVITY";
+    private static final ActivityName ACTIVITY_NAME = ActivityName.TRAVELERS_NUMBER;
+    private static final String LOG_TAG = ACTIVITY_NAME + " ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +55,11 @@ public class GuestNumberActivity extends AppCompatActivity implements ActivityEs
         });
 
         try {
-            currentDestination = ActivitiesUtils.retrieveCurrentDestination(this);
-            destinationType = currentDestination.getDestinationType();
+            booking = ActivitiesUtils.retrieveBooking(this);
+            currentDestination = booking.getCurrentDestination();
             tripPackage = ActivitiesUtils.retrieveTripPackage(this);
+            destinationType = currentDestination.getDestinationType();
+
             initialize();
         } catch (Exception e) {
             Log.e(LOG_TAG, "Error while initializing guests number activity: " + e.getMessage(), e);
@@ -101,8 +106,8 @@ public class GuestNumberActivity extends AppCompatActivity implements ActivityEs
     }
 
     private void launchAirlinesSelectionActivity() {
-        Intent intent = new Intent(GuestNumberActivity.this, AirlinesActivity.class);
-        intent.putExtra("destination_details", currentDestination);
+        Intent intent = new Intent(TravelersNumberActivity.this, AirlinesActivity.class);
+        intent.putExtra("booking", booking);
         intent.putExtra("trip_package", tripPackage);
         startActivity(intent);
     }

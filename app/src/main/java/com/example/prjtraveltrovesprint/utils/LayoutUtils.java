@@ -35,13 +35,12 @@ public class LayoutUtils {
 
 
     /* *To apply builder design pattern*
-        This function responsible of creating a new card and assign it to the hsv
+        This function responsible of creating a new card and assign it to the hsv or ll
    */
     public static CardView generateCard(Context activity,
                                     HorizontalScrollView horizontalScrollView,
                                     LinearLayout container, Card card) {
 
-        // Create the CardView
         CardView cardView = new CardView(activity);
         LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(convertToDp(activity, 200), convertToDp(activity, 250));
         cardParams.setMarginEnd(convertToDp(activity, 12));

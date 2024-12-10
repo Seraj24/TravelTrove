@@ -27,7 +27,7 @@ public class Room implements Serializable {
         final int AVAILABLE_ROOMS = 20;
         this.roomType = roomType;
         this.availableRooms = random.nextInt(AVAILABLE_ROOMS);
-        this.cost = random.nextInt(AVAILABLE_ROOMS) * DataUtils.getRoomsRates(this.roomType);
+        this.cost = random.nextInt(AVAILABLE_ROOMS + 1) * DataUtils.getRoomsRates(this.roomType);
     }
 
     public Room(RoomType roomType, int availableRooms, int cost) {

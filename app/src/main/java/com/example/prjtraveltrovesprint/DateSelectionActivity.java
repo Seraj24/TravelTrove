@@ -16,6 +16,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.prjtraveltrovesprint.interfaces.ActivityEssentials;
+import com.example.prjtraveltrovesprint.model.AirlineBooking;
+import com.example.prjtraveltrovesprint.model.Booking;
 import com.example.prjtraveltrovesprint.model.Date;
 import com.example.prjtraveltrovesprint.model.Destination;
 import com.example.prjtraveltrovesprint.model.TripPackage;
@@ -24,12 +26,12 @@ import com.example.prjtraveltrovesprint.utils.DateUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Objects;
 import java.util.Random;
 
 public class DateSelectionActivity extends AppCompatActivity implements ActivityEssentials, View.OnClickListener {
 
+    Booking booking;
+    AirlineBooking airlineBooking;
     TripPackage tripPackage;
     Destination currentDestination;
     Destination.DestinationType destinationType;
@@ -38,7 +40,8 @@ public class DateSelectionActivity extends AppCompatActivity implements Activity
     Date selectedDepartureDate, selectedReturnDate;
     ArrayList<Integer> generatedDays = new ArrayList<>();
 
-    private static final String LOG_TAG = "DATE SELECTION ACTIVITY";
+    private static final ActivityName ACTIVITY_NAME = ActivityName.DATE_SELECTION;
+    private static final String LOG_TAG = ACTIVITY_NAME + " ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +55,10 @@ public class DateSelectionActivity extends AppCompatActivity implements Activity
         });
 
         try {
-            currentDestination = ActivitiesUtils.retrieveCurrentDestination(this);
+            booking = ActivitiesUtils.retrieveBooking(this);
+            currentDestination = booking.getCurrentDestination();
             destinationType = currentDestination.getDestinationType();
+
             initialize();
         } catch (Exception e) {
             Log.e(LOG_TAG, "Error while initializing date selection activity: " + e.getMessage(), e);
@@ -80,9 +85,16 @@ public class DateSelectionActivity extends AppCompatActivity implements Activity
     }
 
     private void launchGuestsCountActivity() {
-        Intent intent = new Intent(DateSelectionActivity.this, GuestNumberActivity.class);
-        intent.putExtra("destination_details", currentDestination);
+        Intent intent = new Intent(DateSelectionActivity.this, TravelersNumberActivity.class);
+        intent.putExtra("booking", booking);
         intent.putExtra("trip_package", tripPackage);
+        startActivity(intent);
+    }
+
+    private void launchAirlinesActivity() {
+        Intent intent = new Intent(DateSelectionActivity.this, AirlinesActivity.class);
+        intent.putExtra("booking", booking);
+        intent.putExtra("airline_booking", airlineBooking);
         startActivity(intent);
     }
 
@@ -114,10 +126,22 @@ public class DateSelectionActivity extends AppCompatActivity implements Activity
             return;
         }
 
-        tripPackage = new TripPackage();
-        tripPackage.setDate(departureDate.toString() + " - " + returnDate.toString());
-        tripPackage.setDays(totalDays);
-        launchGuestsCountActivity();
+        airlineBooking = new AirlineBooking();
+        airlineBooking.setDepartureDate(departureDate);
+        airlineBooking.setReturnDate(returnDate);
+
+        if (booking.getBookingType() == Booking.BookingType.PACKAGE) {
+            tripPackage = new TripPackage();
+            tripPackage.setDate(departureDate.toString() + " - " + returnDate.toString());
+            tripPackage.setDays(totalDays);
+            tripPackage.setAirlineBooking(airlineBooking);
+            launchGuestsCountActivity();
+        }
+        else {
+
+            launchAirlinesActivity();
+        }
+
     }
 
     private void showDateSelection(Date.DateType dateType, Button btn) {
@@ -216,6 +240,12 @@ public class DateSelectionActivity extends AppCompatActivity implements Activity
                 randomDay += -daysCountOfThisMonth + addDifference;
                 randomDay = randomDay == 0 ? randomDay + 1 : randomDay;
                 month++;
+
+                // Resets to january
+                if (month > 12) {
+                    month = 1;
+                    year++;
+                }
             }
 
 

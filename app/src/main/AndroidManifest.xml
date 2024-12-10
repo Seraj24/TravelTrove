@@ -13,7 +13,16 @@
         android:theme="@style/Theme.PrjTravelTroveSprint"
         tools:targetApi="31">
         <activity
-            android:name=".GuestNumberActivity"
+            android:name=".BookingHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AirlineBookingSummaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HotelBookingSummaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TravelersNumberActivity"
             android:exported="false" />
         <activity
             android:name=".SavedDestinationsActivity"
@@ -22,16 +31,13 @@
             android:name=".ProfileManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".HotelActivity"
-            android:exported="false" />
-        <activity
             android:name=".DestinationActivity"
             android:exported="false" />
         <activity
             android:name=".ConfirmBookingActivity"
             android:exported="false" />
         <activity
-            android:name=".BookingSummary"
+            android:name=".TripPackageBookingSummary"
             android:exported="false" />
         <activity
             android:name=".DateSelectionActivity"

@@ -43,9 +43,9 @@
                 android:layout_height="250dp"
                 android:layout_marginBottom="16dp"
                 android:contentDescription="@drawable/airline_image_down_scaled"
-                android:src="@drawable/airline_image"
+                android:src="@drawable/date_selection"
                 android:scaleType="centerCrop"
-                android:background="@drawable/airline_image_down_scaled"
+                android:background="@drawable/date_selection"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp"/>
 

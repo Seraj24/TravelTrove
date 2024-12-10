@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-        <!-- Main Content Layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,7 +41,7 @@
             android:textColor="#000000"
             android:textSize="16sp" />
 
-        <!-- Section Divider -->
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -50,7 +49,27 @@
             android:layout_marginBottom="16dp"
             android:background="#E0E0E0" />
 
-        <!-- Popular Destinations Section -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_result_horizontal_view"
+            android:paddingBottom="16dp">
+
+            <LinearLayout
+                android:id="@+id/search_result_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/parent"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="@id/popular_cards_container">
+
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
+
+
         <TextView
             android:id="@+id/popular_destinations"
             android:layout_width="wrap_content"
@@ -62,7 +81,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- Horizontal ScrollView for Destination Cards -->
+
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +94,7 @@
                 android:id="@+id/popular_cards_container"
                 android:orientation="horizontal">
 
-                <!-- Paris -->
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="200dp"
                     android:id="@+id/paris_popular_card"
@@ -109,7 +128,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Tokyo -->
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="200dp"
                     android:layout_height="250dp"
@@ -144,7 +163,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- New York -->
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="200dp"
                     android:layout_height="250dp"
@@ -179,7 +198,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Rome -->
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="200dp"
                     android:layout_height="250dp"
@@ -216,7 +235,7 @@
             </LinearLayout>
         </HorizontalScrollView>
 
-        <!-- Section Divider -->
+
         <View
             android:layout_width="match_parent"
             android:layout_height="4dp"
@@ -224,7 +243,7 @@
             android:layout_marginBottom="16dp"
             android:background="#E0E0E0" />
 
-        <!-- Featured Deals Section -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -276,11 +295,11 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Repeat CardViews for other deals -->
+
             </LinearLayout>
         </HorizontalScrollView>
 
-        <!-- Section Divider -->
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -288,7 +307,7 @@
             android:layout_marginBottom="16dp"
             android:background="#E0E0E0" />
 
-        <!-- Upcoming Trips Section -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -298,7 +317,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- Upcoming Trips Layout -->
+
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -308,7 +327,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <!-- Trip Card Template (Example: Bali) -->
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -325,7 +344,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Bali, Indonesia"
+                            android:text="Rome, Italy"
                             android:textColor="#000000"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -333,19 +352,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Nov 12 - Nov 20"
+                            android:text="Dec 12 - Dec 19"
                             android:textColor="#666666" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Weather: 28°C"
-                            android:textColor="#666666" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Repeat CardViews for other trips -->
+
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>

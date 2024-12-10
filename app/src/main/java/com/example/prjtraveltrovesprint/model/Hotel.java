@@ -18,6 +18,11 @@ public class Hotel extends TravelService implements Serializable {
         this.rooms = rooms;
     }
 
+    public Hotel(String name, ArrayList<Room> rooms, String checkInDate, String checkOutDate) {
+        super(name);
+        this.rooms = rooms;
+    }
+
     public ArrayList<Room> getRooms() {
         return rooms;
     }

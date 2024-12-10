@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.prjtraveltrovesprint.AdditionalServicesActivity;
 import com.example.prjtraveltrovesprint.AirlinesActivity;
+import com.example.prjtraveltrovesprint.BookingHistoryActivity;
 import com.example.prjtraveltrovesprint.ProfileManagementActivity;
 import com.example.prjtraveltrovesprint.SavedDestinationsActivity;
 import com.example.prjtraveltrovesprint.SignInActivity;
@@ -25,7 +26,7 @@ import com.example.prjtraveltrovesprint.model.UserSession;
 public class AccountFragment extends Fragment implements ActivityEssentials {
 
     private FragmentAccountBinding binding;
-    Button btnSavedDestinations, btnAccountSettings, btnLogOut;
+    Button btnBookingHistory, btnSavedDestinations, btnAccountSettings, btnLogOut;
     User user;
     TextView greetingTitle;
 
@@ -44,6 +45,7 @@ public class AccountFragment extends Fragment implements ActivityEssentials {
 
     public void initialize() {
 
+        btnBookingHistory = binding.bookingHistoryButton;
         btnSavedDestinations = binding.savedDestinationsButton;
         btnAccountSettings = binding.accountSettingsButton;
         btnLogOut = binding.logoutButton;
@@ -58,6 +60,10 @@ public class AccountFragment extends Fragment implements ActivityEssentials {
         greetingTitleGreet += user.getFirstName();
 
         greetingTitle.setText(greetingTitleGreet);
+
+        btnBookingHistory.setOnClickListener(v ->
+                launchBookingHistory()
+                );
 
         btnSavedDestinations.setOnClickListener(v ->
                 launchSavedDestinationsActivity()
@@ -74,6 +80,11 @@ public class AccountFragment extends Fragment implements ActivityEssentials {
 
     private void launchAccountSettingsActivity() {
         Intent intent = new Intent(getActivity(), ProfileManagementActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchBookingHistory() {
+        Intent intent = new Intent(getActivity(), BookingHistoryActivity.class);
         startActivity(intent);
     }
 

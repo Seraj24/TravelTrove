@@ -32,7 +32,8 @@ public class SavedDestinationsActivity extends AppCompatActivity implements Acti
 
     User user = null;
 
-    private static final String LOG_TAG = "SAVED DESTINATIONS ACTIVITY";
+    private static final ActivityName ACTIVITY_NAME = ActivityName.SAVED_DESTINATIONS;
+    private static final String LOG_TAG = ACTIVITY_NAME + " ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

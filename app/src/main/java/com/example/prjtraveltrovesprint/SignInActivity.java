@@ -35,7 +35,8 @@ public class SignInActivity extends AppCompatActivity implements ActivityEssenti
     FirebaseDatabase ttDatabase;
     DatabaseReference userRef;
 
-    private static final String LOG_TAG = "SIGN_IN ACTIVITY";
+    private static final ActivityName ACTIVITY_NAME = ActivityName.SIGN_IN;
+    private static final String LOG_TAG = ACTIVITY_NAME + " ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

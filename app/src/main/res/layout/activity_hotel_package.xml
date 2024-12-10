@@ -24,6 +24,7 @@
             android:padding="16dp">
 
             <TextView
+                android:id="@+id/txtHotelPackageTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="4. Choose Your Hotel"
@@ -129,6 +130,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp" />
+
+            <!-- Check-in Date Spinner -->
+            <TextView
+                android:id="@+id/txtCheckIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Check-in Date"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/spinnerCheckIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Check-out Date Spinner -->
+            <TextView
+                android:id="@+id/txtCheckOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Check-out Date"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/spinnerCheckOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" />
 
             <TextView
                 android:id="@+id/txtRoomCost"

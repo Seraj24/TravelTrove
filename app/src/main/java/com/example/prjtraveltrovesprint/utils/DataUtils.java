@@ -93,7 +93,8 @@ public class DataUtils {
 
         Random random = new Random();
 
-        int roomsToGenerate = random.nextInt(MAX_ROOMS);
+        int toGenerate = random.nextInt(MAX_ROOMS);
+        int roomsToGenerate =  toGenerate == 0 ? 1 : toGenerate;
 
         for (int i = 0; i <= roomsToGenerate - 1; i++) {
             rooms.add(new Room(roomTypes[i]));

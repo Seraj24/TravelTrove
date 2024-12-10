@@ -1,0 +1,7 @@
+Paris,France,paris_card
+Tokyo,Japan,tokyo_card
+New_York,US,ny_card
+Rome,Italy,shot_stash_colosseum_rome_1
+Sydney,Australia,sydney
+Barcelona, Spain
+London,UK,london_view

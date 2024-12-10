@@ -44,7 +44,8 @@ public class ProfileManagementActivity extends AppCompatActivity implements Acti
         FN,LN,EMAIL,PASSWORD
     }
 
-    private static final String LOG_TAG = "PROFILE MANAGEMENT ACTIVITY";
+    private static final ActivityName ACTIVITY_NAME = ActivityName.PROFILE_MANAGEMENT;
+    private static final String LOG_TAG = ACTIVITY_NAME + " ACTIVITY";
 
     EditText edTextFN, edTextLN, edTextEmail, edTextPassword;
     Button btnEdit, btnSave, btnCancel, btnReturn;

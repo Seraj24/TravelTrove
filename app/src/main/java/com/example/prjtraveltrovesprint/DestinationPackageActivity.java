@@ -15,7 +15,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.prjtraveltrovesprint.interfaces.ActivityEssentials;
+import com.example.prjtraveltrovesprint.model.Booking;
 import com.example.prjtraveltrovesprint.model.Destination;
+import com.example.prjtraveltrovesprint.model.TripPackage;
 import com.example.prjtraveltrovesprint.ui.home.HomeFragment;
 import com.example.prjtraveltrovesprint.utils.ActivitiesUtils;
 import com.example.prjtraveltrovesprint.utils.LayoutUtils;
@@ -27,11 +29,15 @@ public class DestinationPackageActivity extends AppCompatActivity implements Act
     String lastActivity;
     TextView packageTitle;
     ImageView packageBanner;
-    Destination currentDestination;
-    Destination.DestinationType destinationType;
     Button bookButton, returnButton;
 
-    private static final String LOG_TAG = "DESTINATION PACKAGE ACTIVITY";
+    Booking booking;
+    TripPackage tripPackage;
+    Destination currentDestination;
+    Destination.DestinationType destinationType;
+
+    private static final ActivityName ACTIVITY_NAME = ActivityName.DESTINATION_PACKAGE;
+    private static final String LOG_TAG = ACTIVITY_NAME + " ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +51,17 @@ public class DestinationPackageActivity extends AppCompatActivity implements Act
         });
 
         try {
+            booking = ActivitiesUtils.retrieveBooking(this);
+            currentDestination = booking.getCurrentDestination();
+            destinationType = currentDestination.getDestinationType();
 
-            currentDestination = ActivitiesUtils.retrieveCurrentDestination(this);
             lastActivity = getIntent().getStringExtra("last_activity");
             if (lastActivity == null) {
                 Log.e(LOG_TAG, "Last Activity is null");
                 finish();
             }
 
-            destinationType = currentDestination.getDestinationType();
+
 
             initialize();
         } catch (Exception e) {
@@ -84,8 +92,9 @@ public class DestinationPackageActivity extends AppCompatActivity implements Act
     private void returnToDestinationActivity() {
         Intent intent;
         if (Objects.equals(lastActivity, "DestinationActivity")) {
+            if (booking.getBookingType() != null) { booking.setBookingType(null); }
             intent = new Intent(DestinationPackageActivity.this, DestinationActivity.class);
-            intent.putExtra("destination_details", currentDestination);
+            intent.putExtra("booking", booking);
             ActivitiesUtils.returnToViewAndClear(this, intent);
             return;
         }
@@ -95,8 +104,11 @@ public class DestinationPackageActivity extends AppCompatActivity implements Act
 
 
     private void launchDateSelectionActivity() {
+        booking.setBookingType(Booking.BookingType.PACKAGE);
+        tripPackage = new TripPackage();
         Intent intent = new Intent(DestinationPackageActivity.this, DateSelectionActivity.class);
-        intent.putExtra("destination_details", currentDestination);
+        intent.putExtra("booking", booking);
+        intent.putExtra("trip_package", tripPackage);
         startActivity(intent);
     }
 

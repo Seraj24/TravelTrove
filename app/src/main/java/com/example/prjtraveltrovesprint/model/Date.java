@@ -3,7 +3,9 @@ package com.example.prjtraveltrovesprint.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class Date implements Comparable<Date> {
+import java.io.Serializable;
+
+public class Date implements Comparable<Date>, Serializable {
 
     public enum DateType {
         DEPARTURE, RETURN, OTHER
