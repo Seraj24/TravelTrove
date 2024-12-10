@@ -12,6 +12,7 @@ public class Booking implements Serializable {
 
     private BookingType bookingType;
     private Destination currentDestination;
+    private int discount;
 
     public Booking() { }
 
@@ -34,6 +35,14 @@ public class Booking implements Serializable {
 
     public void setCurrentDestination(Destination currentDestination) {
         this.currentDestination = currentDestination;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 
     @NonNull

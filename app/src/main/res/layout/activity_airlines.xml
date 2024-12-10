@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="3. Choose Airline"
+                android:text="@string/choose_airline"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_gravity="center"
@@ -59,19 +59,19 @@
                     android:id="@+id/airline1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Air Canada" />
+                    android:text="@string/air_canada" />
 
                 <RadioButton
                     android:id="@+id/airline2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Air France" />
+                    android:text="@string/air_france" />
 
                 <RadioButton
                     android:id="@+id/airline3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="British Airlines" />
+                    android:text="@string/british_airlines" />
             </RadioGroup>
 
             <LinearLayout
@@ -84,7 +84,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Selected Airline"
+                    android:text="@string/selected_airline"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="20dp"/>
@@ -93,7 +93,7 @@
                     android:id="@+id/details_airline1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Airline: "
+                    android:text="@string/airline"
                     android:layout_marginBottom="8dp"
                     android:textSize="18sp" />
 
@@ -101,7 +101,7 @@
                     android:id="@+id/details_airline2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Avaiable Seats"
+                    android:text="@string/available_seats"
                     android:layout_marginBottom="8dp"
                     android:textSize="18sp" />
 
@@ -109,7 +109,7 @@
                     android:id="@+id/details_airline3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ticket Price: "
+                    android:text="@string/ticket_price"
                     android:layout_marginBottom="8dp"
                     android:textSize="18sp" />
             </LinearLayout>

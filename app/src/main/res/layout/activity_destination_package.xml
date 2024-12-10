@@ -26,7 +26,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:padding="16dp">
 
-        <!-- Trip Title -->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Image Section -->
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="250dp"
@@ -50,11 +50,11 @@
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp"/>
 
-        <!-- Trip Details Section -->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Trip Details"
+            android:text="@string/trip_details"
             android:textSize="25sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp"/>
@@ -62,13 +62,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please choose your trip attributes"
+            android:text="@string/please_choose_your_trip_attributes"
             android:textSize="18sp"
             android:layout_marginBottom="16dp"/>
 
 
 
-        <!-- Book Button -->
+
         <Button
             android:id="@+id/book_button"
             android:layout_width="match_parent"
@@ -79,7 +79,7 @@
             android:padding="12dp"
             android:textSize="18sp"/>
 
-        <!-- Return Button -->
+
         <Button
             android:id="@+id/trip_package_return_button"
             android:layout_width="match_parent"

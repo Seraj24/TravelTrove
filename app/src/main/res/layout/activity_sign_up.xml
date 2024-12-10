@@ -6,7 +6,7 @@
     android:id="@+id/sign_up"
     android:background="@drawable/home_airplane_background">
 
-    <!-- Travel Trove App Icon -->
+
     <ImageView
         android:id="@+id/travel_trove_icon_sign_up"
         android:layout_width="100dp"
@@ -18,13 +18,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0" />
 
-    <!-- Email EditText -->
+
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:maxLines="1"
-        android:hint="Email"
+        android:hint="@string/hint_email"
         android:textColorHint="@color/black"
         app:layout_constraintTop_toBottomOf="@id/travel_trove_icon_sign_up"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,13 +32,13 @@
         android:layout_marginTop="32dp"
         android:layout_marginHorizontal="16dp" />
 
-    <!-- First Name EditText -->
+
     <EditText
         android:id="@+id/editTextFN"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:maxLines="1"
-        android:hint="First name"
+        android:hint="@string/hint_first_name"
         android:textColorHint="@color/black"
         app:layout_constraintTop_toBottomOf="@id/editTextEmail"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,13 +46,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginHorizontal="16dp" />
 
-    <!-- Last Name EditText -->
+
     <EditText
         android:id="@+id/editTextLN"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:maxLines="1"
-        android:hint="Last name"
+        android:hint="@string/hint_last_name"
         android:textColorHint="@color/black"
         app:layout_constraintTop_toBottomOf="@id/editTextFN"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,12 +60,12 @@
         android:layout_marginTop="16dp"
         android:layout_marginHorizontal="16dp" />
 
-    <!-- Password EditText -->
+
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:hint="Password"
+        android:hint="@string/hint_password"
         android:maxLines="1"
         android:textColorHint="@color/black"
         app:layout_constraintTop_toBottomOf="@id/editTextLN"
@@ -75,12 +75,12 @@
         android:layout_marginHorizontal="16dp" />
 
 
-    <!-- Sign Up Button -->
+
     <Button
         android:id="@+id/btn_sign_up"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:backgroundTint="@color/black"
         android:textColor="@color/white"
         android:padding="12dp"
@@ -91,12 +91,12 @@
         android:layout_marginTop="24dp"
         android:layout_marginHorizontal="16dp"/>
 
-    <!-- Sign In TextView -->
+
     <TextView
         android:id="@+id/textViewSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Already have an account? Sign In"
+        android:text="@string/already_have_an_account_sign_in"
         app:layout_constraintTop_toBottomOf="@id/btn_sign_up"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

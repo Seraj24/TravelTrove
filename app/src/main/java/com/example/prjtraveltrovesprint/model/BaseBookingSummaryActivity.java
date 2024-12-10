@@ -69,7 +69,8 @@ public abstract class BaseBookingSummaryActivity extends AppCompatActivity {
     }
 
     protected void returnToBookFragment() {
-        Intent intent = new Intent(BaseBookingSummaryActivity.this, DestinationActivity.class);
+        Intent intent = new Intent(BaseBookingSummaryActivity.this,
+                DestinationActivity.class);
         intent.putExtra("booking", booking);
         intent.putExtra("last_activity", "BookingSummaryActivity");
         ActivitiesUtils.returnToViewAndClear(this, intent);

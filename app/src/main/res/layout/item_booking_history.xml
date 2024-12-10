@@ -15,7 +15,7 @@
             android:id="@+id/txtDestination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Destination"
+            android:text="@string/destination"
             android:textStyle="bold"
             android:textSize="18sp"
             android:gravity="start"/>
@@ -24,7 +24,7 @@
             android:id="@+id/txtBookingType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Booking Type"
+            android:text="@string/booking_type"
             android:textSize="16sp"
             android:gravity="start"/>
 
@@ -32,7 +32,7 @@
             android:id="@+id/txtBookingDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Booking Details"
+            android:text="@string/booking_details"
             android:textSize="14sp"
             android:gravity="start"
             android:ellipsize="end"/>

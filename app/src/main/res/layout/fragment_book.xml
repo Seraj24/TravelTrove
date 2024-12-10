@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Travel Trove App Icon -->
+
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="100dp"
@@ -28,7 +28,7 @@
                 android:src="@drawable/travel_trove_no_background"
                 android:layout_gravity="center"/>
 
-            <!-- Search Bar -->
+
             <EditText
                 android:id="@+id/search_bar_book"
                 android:layout_width="match_parent"

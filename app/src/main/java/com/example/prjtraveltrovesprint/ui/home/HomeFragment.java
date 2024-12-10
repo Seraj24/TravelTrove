@@ -37,9 +37,11 @@ public class HomeFragment extends Fragment implements ActivityEssentials{
     private FragmentHomeBinding binding;
     EditText searchBar;
     private HorizontalScrollView popularHSV;
-    private CardView parisCard, tokyoCard, nyCard;
+    private CardView parisCard, tokyoCard, nyCard, parisPackageDealCard;
     private LinearLayout popularCardsContainer, searchResultContainer;
     private ArrayList<CardView> popularCardsCollection;
+
+    Booking booking;
 
     private Search search;
 
@@ -73,6 +75,8 @@ public class HomeFragment extends Fragment implements ActivityEssentials{
         tokyoCard = binding.tokyoPopularCard;
         nyCard = binding.nyPopularCard;
 
+        parisPackageDealCard = binding.parisFeaturedDealsCard;
+
         // Reference for the parent/container of all popular cards
         popularCardsContainer = binding.popularCardsContainer;
 
@@ -101,21 +105,28 @@ public class HomeFragment extends Fragment implements ActivityEssentials{
                 launchPackageDetailView(Destination.DestinationType.NEW_YORK)
                 );
 
+        parisPackageDealCard.setOnClickListener(v -> {
+            booking = new Booking();
+            booking.setDiscount(50);
+            launchPackageDetailView(Destination.DestinationType.PARIS);
+            });
+
 
     }
 
     private void launchPackageDetailView(Destination.DestinationType destinationType) {
         Intent intent = new Intent(getActivity(), DestinationPackageActivity.class);
         Destination destination = DestinationFactory.getDestination(destinationType);
-        Booking booking = new Booking();
+        booking = booking == null ? new Booking() : booking;
         booking.setCurrentDestination(destination);
         intent.putExtra("booking", booking);
         intent.putExtra("last_activity", this.getClass().getName());
         startActivity(intent);
     }
 
+    /*
     private void launchDestinationView(Destination.DestinationType destinationType) {
-        Booking booking = new Booking();
+        booking = new Booking();
         Intent intent = new Intent(getActivity(), DestinationActivity.class);
         Destination destination = DestinationFactory.getDestination(destinationType);
         booking.setCurrentDestination(destination);
@@ -123,5 +134,7 @@ public class HomeFragment extends Fragment implements ActivityEssentials{
         intent.putExtra("last_activity", "BookView");
         startActivity(intent);
     }
+    */
+
 
 }

@@ -25,12 +25,12 @@ import java.util.Locale;
 public class TripPackageBookingSummary extends BaseBookingSummaryActivity implements ActivityEssentials {
 
 
-    Booking booking;
     TripPackage tripPackage;
     Destination currentDestination;
 
     int guestsCount;
     double hotelCost, airlineCost, totalCost = -1;
+    int discount;
 
     private static final ActivityName ACTIVITY_NAME = ActivityName.BOOKING_SUMMARY;
     private static final String LOG_TAG = ACTIVITY_NAME + " ACTIVITY";
@@ -115,6 +115,10 @@ public class TripPackageBookingSummary extends BaseBookingSummaryActivity implem
         hotelCost = tripPackage.getHotelBooking().getRoom().getCost() * tripPackage.getDays();
         airlineCost = tripPackage.getAirlineBooking().getAirline().getCost();
         totalCost = (hotelCost + airlineCost) * guestsCount;
+        discount = booking.getDiscount();
+        if (discount > 0)
+            totalCost = totalCost * (discount / 100.0);
+
         return totalCost;
     }
 }
